@@ -9,8 +9,7 @@ namespace Snake
         static void Main()
         {
             Console.CursorVisible = false;
-            Frame frame = new Frame();
-            frame.Draw();
+            DrawFrame();
             bool exit = false;
             double refreshRate = 1000 / 5.0;
             DateTime lastTime = DateTime.Now;
@@ -18,16 +17,14 @@ namespace Snake
             SnakeClass snake = new SnakeClass();
             while(!exit)
             {
-                Console.SetCursorPosition(Console.WindowWidth / 2 - 7 , 1);
-                Console.Write($"Score : {snake.Length-1}");
-
+                
                 if(Console.KeyAvailable)
                 {
                     ConsoleKeyInfo input = Console.ReadKey();
                     switch(input.Key)
                     {
                         case ConsoleKey.Escape:
-                            snake.outOfRange = true;
+                            snake.gameOver = true;
                             break;
                         case ConsoleKey.UpArrow:
                             if (snake.Direction != Direction.down) 
@@ -71,6 +68,27 @@ namespace Snake
                 }
             }
            
+        }
+        public static void DrawFrame()
+        {
+            int height = Console.WindowHeight;
+            int width = Console.WindowWidth;
+            
+            for(int i = 1; i<width; i++)
+            {
+                Console.SetCursorPosition(i, 2);
+                Console.WriteLine("_");
+                Console.SetCursorPosition(i, height - 1);
+                Console.WriteLine("_");
+            }
+            for(int i = 3; i<height; i++)
+            {
+                Console.SetCursorPosition(1, i);
+                Console.WriteLine("|");
+                Console.SetCursorPosition(width - 1, i);
+                Console.WriteLine("|");
+            }
+
         }
     }
 }

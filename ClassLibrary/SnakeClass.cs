@@ -16,13 +16,18 @@ namespace ClassLibrary
 
         public bool gameOver
         {
-            get { return (Tail.Where(c => c.X == HeadPosition.X && c.Y == HeadPosition.Y).ToList().Count > 1) || outOfRange; }
+            
+            get { return (Tail.Where(c => c.X == HeadPosition.X && c.Y == HeadPosition.Y).ToList().Count > 1) || 
+            HeadPosition.X == 1 || HeadPosition.X == Console.WindowWidth-1 || HeadPosition.Y == 2 || HeadPosition.Y == Console.WindowHeight-1;}
+            set{;}
         }
         
 
         public void Eat()
         {
             Length++;
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 7 , 1);
+            Console.Write($"Score : {Length-1}");
         }
 
         public void Move()
@@ -54,12 +59,6 @@ namespace ClassLibrary
                 Console.Write(" ");
                 Tail.Remove(endTail);
             }
-
-            if(HeadPosition.X == 1 || HeadPosition.X == Console.WindowWidth-1 || HeadPosition.Y == 2 || HeadPosition.Y == Console.WindowHeight-1)
-            {
-                outOfRange = true;
-            }
-            
             
         }
     }
