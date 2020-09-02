@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices.WindowsRuntime;
+using ClassLibrary;
 
 namespace Snake
 {
@@ -14,7 +15,7 @@ namespace Snake
             double refreshRate = 1000 / 5.0;
             DateTime lastTime = DateTime.Now;
             Food food = new Food();
-            Snake snake = new Snake();
+            SnakeClass snake = new SnakeClass();
             while(!exit)
             {
                 Console.SetCursorPosition(Console.WindowWidth / 2 - 7 , 1);

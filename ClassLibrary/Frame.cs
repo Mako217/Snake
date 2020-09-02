@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Snake
+namespace ClassLibrary
 {
     public class Frame
     {

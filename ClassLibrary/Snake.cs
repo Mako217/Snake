@@ -4,9 +4,9 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 
-namespace Snake
+namespace ClassLibrary
 {
-    public class Snake
+    public class SnakeClass
     {
         public int Length { get; set; } = 6;
         public Direction Direction { get; set; } = Direction.right;
